@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,12 +21,12 @@ namespace Core.Models
         /// <summary>
         /// Nome do jogador
         /// </summary>
-        public int Nome { get; set; }
+        public string Nome { get; set; }
 
         /// <summary>
         /// Endereço IP do jogador
         /// </summary>
-        public int IPAddress { get; set; }
+        public IPAddress IPAddress { get; set; }
         
     }
 }
