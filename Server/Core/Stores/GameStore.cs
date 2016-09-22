@@ -22,13 +22,16 @@ namespace Core.Stores
             Game = new Game();
         }
 
-        public static GameStore Instance()
+        public static GameStore Instance
         {
-            if (_instance == null)
-            {
-                _instance = new GameStore();
+            get{
+                if (_instance == null)
+                {
+                    _instance = new GameStore();
+                }
+                return _instance;
             }
-            return _instance;
+            
         }
         
     }

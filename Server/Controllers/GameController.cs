@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,11 @@ namespace Server.Controllers
     /// </summary>
     public class GameController
     {
+
+        public GameController()
+        {
+            
+        }
+
     }
 }
