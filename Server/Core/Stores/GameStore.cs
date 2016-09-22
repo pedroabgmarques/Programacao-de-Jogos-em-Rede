@@ -30,7 +30,8 @@ namespace Core.Stores
             }
             else
             {
-                return new GameStore();
+                _instance = new GameStore();
+                return _instance;
             }
         }
         
