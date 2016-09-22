@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Server\Core\Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{a575fc39-3f05-46fc-9843-519aa4f24540}</Project>
       <Name>Core</Name>
     </ProjectReference>

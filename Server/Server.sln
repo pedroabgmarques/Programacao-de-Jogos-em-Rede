@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\Client\Client.csproj", "{D5EEDAEF-AFD2-4813-9B02-0AE8F1309644}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{A575FC39-3F05-46FC-9843-519AA4F24540}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "..\Core\Core.csproj", "{A575FC39-3F05-46FC-9843-519AA4F24540}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

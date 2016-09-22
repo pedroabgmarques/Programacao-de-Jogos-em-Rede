@@ -50,10 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Fakes Include="Fakes\Core.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Core\Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{a575fc39-3f05-46fc-9843-519aa4f24540}</Project>
       <Name>Core</Name>
     </ProjectReference>
