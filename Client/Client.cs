@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server
+namespace Client
 {
-    class Program
+    class Client
     {
         static void Main(string[] args)
         {
-
-
-
         }
     }
 }

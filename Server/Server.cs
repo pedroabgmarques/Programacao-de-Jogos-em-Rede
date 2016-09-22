@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Server
 {
-    public class Class1
+    class Server
     {
+        static void Main(string[] args)
+        {
+
+
+
+        }
     }
 }
