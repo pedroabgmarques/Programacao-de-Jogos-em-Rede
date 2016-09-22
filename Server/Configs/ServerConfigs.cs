@@ -15,6 +15,6 @@ namespace Server.Configs
         /// <summary>
         /// Porto em que o servidor escuta
         /// </summary>
-        public static const int Port = 7777;
+        public const int Port = 7777;
     }
 }

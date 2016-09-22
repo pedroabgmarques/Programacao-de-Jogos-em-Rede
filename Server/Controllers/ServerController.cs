@@ -1,5 +1,5 @@
 ﻿using Core.Models;
-using Core.Stores;
+using Core.Models;
 using Server.Configs;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Server.Controllers
 {
 
     /// <summary>
-    /// Class documentation
+    /// Controla o comportamento do servidor
     /// </summary>
     public class ServerController
     {
