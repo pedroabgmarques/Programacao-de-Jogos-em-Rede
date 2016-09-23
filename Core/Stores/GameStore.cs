@@ -17,8 +17,8 @@ namespace Core.Stores
             Game = new Game();
         }
 
-        public static GameStore Instance => _instance ?? (_instance = new GameStore());
-        /*public static GameStore Instance
+        //public static GameStore Instance => _instance ?? (_instance = new GameStore());
+        public static GameStore Instance
         {
             get
             {
@@ -28,6 +28,6 @@ namespace Core.Stores
                 }
                 return _instance;
             }
-        }*/
+        }
     }
 }

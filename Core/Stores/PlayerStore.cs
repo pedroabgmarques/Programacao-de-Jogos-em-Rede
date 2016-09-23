@@ -17,6 +17,17 @@ namespace Core.Stores
             Player = new Player();
         }
 
-        public static PlayerStore Instance => _instance ?? (_instance = new PlayerStore());
+        //public static PlayerStore Instance => _instance ?? (_instance = new PlayerStore());
+        public static PlayerStore Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PlayerStore();
+                }
+                return _instance;
+            }
+        }
     }
 }
