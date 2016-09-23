@@ -6,26 +6,11 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-
-    /// <summary>
-    /// Guarda o estado do jogo
-    /// </summary>
     public class Game
     {
-        /// <summary>
-        /// Lista de jogadores presentes no jogo
-        /// </summary>
-        public List<Player> ListaJogadores { get; set; }
-
-        /// <summary>
-        /// Numero que os jogadores tentam adivinhar
-        /// </summary>
+        public List<Player> PlayerList { get; set; }
         public int TargetNumber { get; set; }
-
-        /// <summary>
-        /// Lista de jogadas deste jogo
-        /// </summary>
-        public List<Move> ListaJogadas { get; set; }
-
+        public List<Move> MoveList { get; set; }
+        public GameState GameState { get; set; }
     }
 }

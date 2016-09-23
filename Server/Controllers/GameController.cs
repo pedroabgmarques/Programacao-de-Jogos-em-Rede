@@ -1,28 +1,19 @@
-﻿using Core.Stores;
-using Core.Models;
-using Server.Configs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-
+using Core.Models;
+using Core.Stores;
+using Server.Configs;
 
 namespace Server.Controllers
 {
-
-    /// <summary>
-    /// Lógica de negócio do jogo
-    /// </summary>
     public class GameController
     {
-
         public GameController()
         {
             
         }
-
     }
 }

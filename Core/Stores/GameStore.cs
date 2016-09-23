@@ -1,20 +1,15 @@
-﻿using Core.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Models;
 
 namespace Core.Stores
 {
-
-    /// <summary>
-    /// Singleton para disponibilizar uma e apenas uma instância de Game
-    /// </summary>
     public sealed class GameStore
     {
         private static GameStore _instance;
-
         public Game Game { get; set; }
 
         private GameStore()
@@ -22,17 +17,17 @@ namespace Core.Stores
             Game = new Game();
         }
 
-        public static GameStore Instance
+        public static GameStore Instance => _instance ?? (_instance = new GameStore());
+        /*public static GameStore Instance
         {
-            get{
+            get
+            {
                 if (_instance == null)
                 {
                     _instance = new GameStore();
                 }
                 return _instance;
             }
-            
-        }
-        
+        }*/
     }
 }
