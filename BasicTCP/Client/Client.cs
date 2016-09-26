@@ -29,12 +29,12 @@ namespace Client
                     //Ler a mensagem e convertê-la para bytes
                     String messageString = Console.ReadLine();
                     byte[] messageBytes = Encoding.Unicode.GetBytes(
-                            JsonConvert.SerializeObject(
-                                new Mensagem()
-                                {
-                                    Message = messageString
-                                })
-                            );
+                        JsonConvert.SerializeObject(
+                            new Mensagem()
+                            {
+                                Message = messageString
+                            })
+                        );
 
                     //Enviar a mensagem para o servidor
                     Stream stream = tcpClient.GetStream();

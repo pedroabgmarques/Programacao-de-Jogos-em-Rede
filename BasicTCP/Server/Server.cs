@@ -49,12 +49,12 @@ namespace Server
 
                     //Enviar mensagem
                     byte[] messageBytes = Encoding.Unicode.GetBytes(
-                            JsonConvert.SerializeObject(
-                                new Mensagem()
-                                {
-                                    Message = "Hello client!"
-                                })
-                            );
+                        JsonConvert.SerializeObject(
+                            new Mensagem()
+                            {
+                                Message = "Hello client!"
+                            })
+                        );
                     socket.Send(messageBytes);
 
                     socket.Close();
