@@ -62,7 +62,7 @@ namespace Server.Controllers
                         {
                             GameStore.Instance.Game.GameState = GameState.GameInitializing;
                         }
-                        Console.WriteLine("Player"+ receivedNetworkMessage.Player.PlayerName + " entered the game");
+                        Console.WriteLine("Player "+ receivedNetworkMessage.Player.PlayerName + " entered the game");
                         Console.WriteLine("Players " + GameStore.Instance.Game.PlayerList.Count + "/" + ServerConfig.MaxPlayers);
                         break;
                     case GameState.GameInitializing:
