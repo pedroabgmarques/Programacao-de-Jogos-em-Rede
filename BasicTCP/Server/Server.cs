@@ -35,12 +35,15 @@ namespace Server
                         
                     }
 
+                    char[] msgByteArray = new char[messageByteBuffer];
                     //Escrever a mensagem recebida
                     for (int i = 0; i < messageByteBuffer; i++)
                     {
-                        Console.Write(Convert.ToChar(messageByte[i]));
+                        msgByteArray[i] = Convert.ToChar(messageByte[i]);
                     }
-                    Console.WriteLine();
+                    string mensagem = new string(msgByteArray);
+
+                    Console.WriteLine(mensagem + "\n");
 
                     //Enviar mensagem
                     ASCIIEncoding asciiEncoding = new ASCIIEncoding();
