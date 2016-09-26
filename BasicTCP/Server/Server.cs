@@ -15,10 +15,10 @@ namespace Server
             try
             {
                 IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
-
                 TcpListener tcpListener = new TcpListener(ipAddress, 7777);
-
                 tcpListener.Start();
+                Console.WriteLine("Server listening.");
+
                 while (true)
                 {
                     Socket socket = tcpListener.AcceptSocket();
@@ -26,24 +26,36 @@ namespace Server
                     byte[] messageByte = new byte[100];
                     int messageByteBuffer = socket.Receive(messageByte);
 
+                    IPEndPoint remoteIpEndPoint = socket.RemoteEndPoint as IPEndPoint;
+
+                    if (remoteIpEndPoint != null)
+                    {
+                        Console.WriteLine("\nMensagem recebida!");
+                        Console.WriteLine("De: " + remoteIpEndPoint.Address + ":" + remoteIpEndPoint.Port);
+                        
+                    }
+
+                    //Escrever a mensagem recebida
                     for (int i = 0; i < messageByteBuffer; i++)
                     {
                         Console.Write(Convert.ToChar(messageByte[i]));
                     }
-                    Console.WriteLine("\n");
+                    Console.WriteLine();
+
+                    //Enviar mensagem
                     ASCIIEncoding asciiEncoding = new ASCIIEncoding();
                     socket.Send(asciiEncoding.GetBytes("Hello Client."));
 
                     socket.Close();
+
                 }
-                
-                
-                tcpListener.Stop();
+
+                //tcpListener.Stop();
 
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Message);
                 Console.ReadLine();
             }
         }
