@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Common;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -22,32 +24,38 @@ namespace Server
                 while (true)
                 {
                     Socket socket = tcpListener.AcceptSocket();
-                
-                    byte[] messageByte = new byte[100];
-                    int messageByteBuffer = socket.Receive(messageByte);
 
                     IPEndPoint remoteIpEndPoint = socket.RemoteEndPoint as IPEndPoint;
+
+                    byte[] messageByte = new byte[100];
+                    int messageByteBuffer = socket.Receive(messageByte);
 
                     if (remoteIpEndPoint != null)
                     {
                         Console.WriteLine("\nMensagem recebida!");
                         Console.WriteLine("De: " + remoteIpEndPoint.Address + ":" + remoteIpEndPoint.Port);
-                        
+
                     }
 
-                    char[] msgByteArray = new char[messageByteBuffer];
+                    //Converter a mensagem recebida em bytes para um objeto Mensagem
+                    string message = Encoding.Unicode.GetString(messageByte);
+                    Mensagem receivedNetworkMessage =
+                        JsonConvert.DeserializeObject<Mensagem>(
+                            Encoding.Unicode.GetString(messageByte).ToString()
+                            );
+
                     //Escrever a mensagem recebida
-                    for (int i = 0; i < messageByteBuffer; i++)
-                    {
-                        msgByteArray[i] = Convert.ToChar(messageByte[i]);
-                    }
-                    string mensagem = new string(msgByteArray);
-
-                    Console.WriteLine(mensagem + "\n");
+                    Console.WriteLine(receivedNetworkMessage.Message);
 
                     //Enviar mensagem
-                    ASCIIEncoding asciiEncoding = new ASCIIEncoding();
-                    socket.Send(asciiEncoding.GetBytes("Hello Client."));
+                    byte[] messageBytes = Encoding.Unicode.GetBytes(
+                            JsonConvert.SerializeObject(
+                                new Mensagem()
+                                {
+                                    Message = "Hello client!"
+                                })
+                            );
+                    socket.Send(messageBytes);
 
                     socket.Close();
 

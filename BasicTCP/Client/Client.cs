@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Common;
 
 namespace Client
 {
@@ -12,10 +14,9 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            //try
-            //{
-                
-                
+            try
+            {
+
                 Console.WriteLine("Client connected to server.");
                 
                 while (true)
@@ -27,8 +28,13 @@ namespace Client
 
                     //Ler a mensagem e convertê-la para bytes
                     String messageString = Console.ReadLine();
-                    ASCIIEncoding asen = new ASCIIEncoding();
-                    byte[] messageBytes = asen.GetBytes(messageString);
+                    byte[] messageBytes = Encoding.Unicode.GetBytes(
+                            JsonConvert.SerializeObject(
+                                new Mensagem()
+                                {
+                                    Message = messageString
+                                })
+                            );
 
                     //Enviar a mensagem para o servidor
                     Stream stream = tcpClient.GetStream();
@@ -43,27 +49,27 @@ namespace Client
                         Console.WriteLine("\nAnswer from server received:");
                     }
 
-                    //Escrever mensagem recebida do servidor
-                    for (int i = 0; i < responseBytesBuffer; i++)
-                    {
-                        Console.Write(Convert.ToChar(responseBytes[i]));
-                    }
+                    string message = Encoding.Unicode.GetString(responseBytes);
+                    Mensagem receivedNetworkMessage =
+                        JsonConvert.DeserializeObject<Mensagem>(
+                            Encoding.Unicode.GetString(responseBytes).ToString()
+                            );
+
+                    //Escrever a mensagem recebida
+                    Console.WriteLine(receivedNetworkMessage.Message);
 
                     tcpClient.Close();
 
                     
                 }
 
-                //
-                
-                
             }
 
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.StackTrace);
-            //    Console.ReadLine();
-            //}
-        //}
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                Console.ReadLine();
+            }
+        }
     }
 }
