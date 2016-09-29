@@ -8,9 +8,10 @@ using Newtonsoft.Json;
 
 namespace Common
 {
+
     public struct Mensagem
     {
         [JsonProperty("Message")]
-        public string Message { get; set; } 
+        public string Message { get; set; }
     }
 }

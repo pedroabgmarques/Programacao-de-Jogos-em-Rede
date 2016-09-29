@@ -41,8 +41,8 @@ namespace Client
                     stream.Write(messageBytes, 0, messageBytes.Length);
 
                     //Ler resposta do servidor
-                    byte[] responseBytes = new byte[100];
-                    int responseBytesBuffer = stream.Read(responseBytes, 0, 100);
+                    byte[] responseBytes = new byte[10000];
+                    int responseBytesBuffer = stream.Read(responseBytes, 0, 10000);
 
                     if (responseBytesBuffer > 0)
                     {
@@ -58,6 +58,11 @@ namespace Client
                     //Escrever a mensagem recebida
                     Console.WriteLine(receivedNetworkMessage.Message);
 
+                    if (!ProcessMessage(receivedNetworkMessage, stream))
+                    {
+                        break;
+                    }
+
                     tcpClient.Close();
 
                     
@@ -70,6 +75,18 @@ namespace Client
                 Console.WriteLine(e.StackTrace);
                 Console.ReadLine();
             }
+        }
+
+        static private bool ProcessMessage(Mensagem message, Stream stream)
+        {
+            string m = message.Message;
+
+            if (m == "bye" || m == "exit" || m == "quit")
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
